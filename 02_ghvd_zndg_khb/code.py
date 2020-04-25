@@ -1,40 +1,35 @@
-
-def rules_compatible(l_i, r_i, type_i, l_j, r_j, type_j):
-    return (type_i != type_j) and (max([l_i, l_j]) < min([r_i, r_j]))
-
-
 def main():
-    result = -1
-    m, n = map(int, input().split())
-    h = [0] * n
-    compatible = True
-    lefts = [0] * m
-    rights = [0] * m
-    types = [0] * m
+    n, m = map(int, input().split())
+    rules = [-1] * (n - 1)
+    rules_are_compatible = True
     for i in range(m):
-        lefts[i], rights[i], types[i] = map(int, input().split())
-        for j in range(i):
-            if (types[i] != types[j]) and (max([lefts[i], lefts[j]]) < min([rights[i], rights[j]])):
-                return -1
-    if compatible:
-        for i in range(2, n):
-            for j in range(m):
-                if (i > lefts[j]) and (i <= rights[j]):
-                    if types[j] == 0:
-                        h[i] = h[i - 1] - 1
-                    else:
-                        h[i] = h[i - 1] + 1
-                if not compatible:
-                    break
-        min_val = min(h)
-        min_val = 1 - min_val
-        result = ''
-        for item in h:
-            result = result + ' ' + str(item + min_val)
-        result = result[1:]
-    return result
+        l, r, type = map(int, input().split())
+        for i in range(l - 1, r - 1):
+            if rules[i] == -1:
+                rules[i] = type
+            elif rules[i] != type:
+                rules_are_compatible = False
+
+    if rules_are_compatible:
+        prev_rule = 1
+        steps = [prev_rule] * n
+        min_val = 1
+        for i in range(1, n):
+            if rules[i - 1] == 1:
+                prev_rule = steps[i - 1] + 1
+            elif rules[i - 1] == 0:
+                prev_rule = steps[i - 1] - 1
+                if min_val > prev_rule:
+                    min_val = prev_rule
+            steps[i] = prev_rule
+
+        for i in range(n):
+            steps[i] = steps[i] - min_val + 1
+
+        return ' '.join(str(x) for x in steps)
+    else:
+        return '-1'
 
 
-if __name__ == '__main__':
-    result = main()
-    print(result)
+if __name__ == "__main__":
+    print(main())

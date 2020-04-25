@@ -13,8 +13,8 @@ class MyTest(TestCase):
 
 
     @patch('code.input', create=True)
-    def test_answer_yes(self, mocked_input):
+    def test_answer_no(self, mocked_input):
         mocked_input.side_effect = ['4 3', '2 2 0', '2 3 1', '1 4 0']
         result = code.main()
         print(result)
-        self.assertEqual(code.main(), -1)
+        self.assertEqual(code.main(), '-1')
