@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(100000)
+sys.setrecursionlimit(10**6)
 
 
 def fn(i):
@@ -12,9 +12,6 @@ def fn(i):
         return tmp * tmp
 
 
-def main():
-    print(fn(int(input())))
-
-
-if __name__ == '__main__':
-    main()
+n = int(input())
+result = fn(n)
+print(result)
