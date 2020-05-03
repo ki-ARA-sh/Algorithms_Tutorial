@@ -13,7 +13,7 @@ def gray_code(length):
 
 
 def main():
-    print(', '.join(gray_code(int(input()))))
+    print('\n'.join(gray_code(int(input()))))
 
 
 if __name__ == "__main__":
