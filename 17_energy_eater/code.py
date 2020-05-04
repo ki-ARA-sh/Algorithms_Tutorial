@@ -1,11 +1,4 @@
 
-def eat_fruit(fruit):
-    if fruit[1] - fruit[0] > 0:
-        return True
-    else:
-        return False
-
-
 def gained_energy(energy, fruit):
     if energy >= fruit[0]:
         return fruit[1] - fruit[0]
@@ -36,9 +29,12 @@ def main():
     n, init = map(int, input().split())
     fruits = []
     for i in range(n):
-        a, b = map(int, input().split())
+        a, b = list(map(int, input().split()))
         if (b - a) > 0:
-            fruits = insert_fruit_to_list(fruits, a, b)
+            fruits.append([a, b])
+        # if (b - a) > 0:
+        #     fruits = insert_fruit_to_list(fruits, a, b)
+    fruits = sorted(fruits)
     print(get_energy(init, fruits))
 
 
