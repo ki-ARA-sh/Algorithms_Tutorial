@@ -9,8 +9,9 @@ def hanoi(A, B, C, n):
 
 
 def main():
-    moves = hanoi("A", "B", "C", int(input()))
-    print("\n".join(moves))
+    moves = hanoi("A", "C", "B", int(input()))
+    for i in range(len(moves)):
+        print(str(i + 1) + " " + moves[i])
 
 
 if __name__ == '__main__':
