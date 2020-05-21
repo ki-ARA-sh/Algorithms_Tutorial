@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(10**9)
 
 
 def fn(i):
@@ -9,7 +9,7 @@ def fn(i):
     if i % 2 == 0:
         return tmp - 21
     else:
-        return tmp * tmp
+        return tmp ** 2
 
 
 n = int(input())
