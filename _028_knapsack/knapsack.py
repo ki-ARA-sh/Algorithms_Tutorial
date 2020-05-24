@@ -28,6 +28,17 @@ def knapsack_dp(w, v, n, s):
     return dp[n][s]
 
 
+def knapsack_dp_optimized_memory(w, v, n, s):
+    dp = [[0 for i in range(s + 1)] for j in range(2)]
+    for i in range(1, n + 1):
+        for j in range(s, -1, -1):
+            if (w[i - 1] <= j) and (dp[(i - 1) % 2][j - w[i - 1]] + v[i - 1] > dp[(i - 1) % 2][j]):
+                dp[i % 2][j] = dp[(i - 1) % 2][j - w[i - 1]] + v[i - 1]
+            else:
+                dp[i % 2][j] = dp[(i - 1) % 2][j]
+    return dp[n % 2][s]
+
+
 def knapsack_exact_recursive(w, n, s):
     if s == 0:
         return 1
@@ -54,6 +65,10 @@ def knapsack_inf_recursive(w, v, n, s):
     for i in range(s // w[0] + 1):
         ans = max(ans, knapsack_inf_recursive(w[1:], v[1:], n - 1, s - i * w[0]) + i * v[0])
     return ans
+
+
+def knapsack_inf_dp(w, v, n, s):
+    pass
 
 
 def main():
