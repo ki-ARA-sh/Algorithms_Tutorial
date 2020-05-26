@@ -18,7 +18,6 @@ def lcs(p, q):
     return dp[n % 2][m], updates[n % 2][m]
 
 
-
 def main():
     p = input()
     q = input()
