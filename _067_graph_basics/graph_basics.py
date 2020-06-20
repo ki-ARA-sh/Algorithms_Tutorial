@@ -44,7 +44,6 @@ def solve_back(n, adj):
     return result
 
 
-
 # finding connected components by DFS
 def dfs(v, L, mark, adj):
     mark[v] = True
@@ -66,12 +65,12 @@ def solve(n, adj):
 
 
 # finding whether a given graph has cycle or not by DFS (DFS tree to be exact)
-def dfs_cyle(v, dad, mark, adj):
+def dfs_cycle(v, dad, mark, adj):
     mark[v] = True
     result = False
     for u in adj[v]:
         if not mark[u]:
-            result = result or dfs_cyle(u, v, mark, adj)
+            result = result or dfs_cycle(u, v, mark, adj)
         elif u != dad:
             result = True
     return result
