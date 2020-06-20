@@ -47,6 +47,7 @@ def solve_back(n, adj):
 # finding connected components by DFS
 def dfs(v, L, mark, adj):
     mark[v] = True
+    L.append(v)
     for u in adj[v]:
         if not mark[u]:
             dfs(u, L, mark, adj)
