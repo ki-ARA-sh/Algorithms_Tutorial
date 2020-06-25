@@ -50,6 +50,8 @@ def main():
                     result[0] = result[0] + 1
                 elif is_greater == 0 and is_less > 0:
                     result[1] = result[1] + 1
+    if result == [0, 0]:
+        result = [1, 1]
     print(' '.join(list(map(str, result))))
 
 
